@@ -1,15 +1,19 @@
 import os
 from PIL import Image
+import readline
 
+readline.parse_and_bind("tab: complete")
 sq_fit_size = 1080
+
 logo_file = input("Arquivo Marca D'água: ")
-img_folder = input("Diretório com imagens: ")
-
-if not (os.path.exists(img_folder)):
-	print("Diretório de Imagens não existe")
-
 if not (os.path.isfile(logo_file)):
 	print("Logo não existe")
+	quit()
+
+img_folder = input("Diretório com imagens: ")
+if not (os.path.exists(img_folder)):
+	print("Diretório de Imagens não existe")
+	quit()
 
 logoIm = Image.open(logo_file)
 logoWidth, logoHeight = logoIm.size
